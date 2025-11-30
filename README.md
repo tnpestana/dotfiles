@@ -6,17 +6,27 @@ Personal configuration files for ghostty, nvim, and tmux.
 
 ```
 ~/dotfiles/
-├── ghostty/          # Ghostty terminal configuration
-│   └── config        # Main config file
-├── nvim/             # Neovim configuration
-│   ├── init.lua      # Entry point
-│   └── lua/          # Lua config modules
-├── tmux/             # Tmux configuration
-│   ├── tmux.conf     # Main config file
-│   └── plugins/      # TPM plugins (gitignored)
-├── zshrc             # Zsh configuration with tmux aliases
-├── install.sh        # Automated installation script
-└── .gitignore        # Ignore plugin directories
+├── ghostty/                    # Ghostty terminal configuration
+│   ├── config                  # Main config file
+│   └── ghostty-cheatsheet.md   # Keybindings and configuration reference
+├── nvim/                       # Neovim configuration
+│   ├── init.lua                # Entry point
+│   ├── nvim-cheatsheet.md      # Keybindings and plugin reference
+│   └── lua/                    # Lua config modules
+│       ├── core/               # Core configuration
+│       │   ├── keymaps.lua     # Centralized keybindings
+│       │   ├── settings.lua    # Editor settings
+│       │   └── plugins.lua     # Plugin manager setup
+│       └── plugins/            # Plugin configurations
+├── tmux/                       # Tmux configuration
+│   ├── tmux.conf               # Main config file
+│   ├── tmux-cheatsheet.md      # Keybindings and usage reference
+│   ├── session-management-guide.md  # Advanced session management
+│   └── plugins/                # TPM plugins (gitignored)
+├── zshrc                       # Zsh configuration with tmux aliases
+├── zsh-cheatsheet.md           # Shell aliases and tool reference
+├── install.sh                  # Automated installation script
+└── .gitignore                  # Ignore plugin directories
 ```
 
 ## Installation
@@ -83,11 +93,23 @@ git pull
 
 For plugin updates, use the respective plugin managers.
 
+## Cheatsheets
+
+Comprehensive cheatsheets are included for quick reference:
+
+- **[nvim-cheatsheet.md](nvim/nvim-cheatsheet.md)** - Neovim keybindings, LSP commands, Telescope, plugins, and Vim motions
+- **[tmux-cheatsheet.md](tmux/tmux-cheatsheet.md)** - Tmux keybindings, session management, and window organization
+- **[ghostty-cheatsheet.md](ghostty/ghostty-cheatsheet.md)** - Ghostty terminal keybindings and configuration options
+- **[zsh-cheatsheet.md](zsh-cheatsheet.md)** - Shell aliases, Zoxide navigation, and tool integration
+
+These cheatsheets document the current configuration and are designed to be portable and shareable.
+
 ## Tools
 
 ### Neovim
 - Plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
 - Plugins are defined in `nvim/lua/core/plugins.lua`
+- Keybindings are centralized in `nvim/lua/core/keymaps.lua`
 - Plugin data stored in `~/.local/share/nvim/lazy/` (gitignored)
 
 ### Tmux
