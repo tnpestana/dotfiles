@@ -19,7 +19,29 @@ Personal configuration files for ghostty, nvim, and tmux.
 
 ## Installation
 
-### Fresh Installation
+### Quick Install (Recommended)
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/tnpestana/dotfiles.git ~/dotfiles
+   ```
+
+2. Run the installation script:
+   ```bash
+   cd ~/dotfiles
+   ./install.sh
+   ```
+
+The script will:
+- Automatically backup any existing configs with timestamps
+- Remove old symlinks
+- Create new symlinks to the dotfiles repo
+- Install TPM (Tmux Plugin Manager)
+- Guide you through the remaining steps
+
+### Manual Installation
+
+If you prefer to install manually:
 
 1. Clone this repository:
    ```bash
