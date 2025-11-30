@@ -82,6 +82,7 @@ backup_if_exists "$HOME/.config/nvim" "nvim config"
 backup_if_exists "$HOME/.config/tmux" "tmux config"
 backup_if_exists "$HOME/.config/ghostty" "ghostty config"
 backup_if_exists "$HOME/.tmux.conf" ".tmux.conf"
+backup_if_exists "$HOME/.zshrc" ".zshrc"
 
 if [ -d "$BACKUP_DIR" ]; then
     print_success "Backups saved to: $BACKUP_DIR"
@@ -98,6 +99,7 @@ create_symlink "$DOTFILES_DIR/nvim" "$HOME/.config/nvim" "nvim"
 create_symlink "$DOTFILES_DIR/tmux" "$HOME/.config/tmux" "tmux"
 create_symlink "$DOTFILES_DIR/ghostty" "$HOME/.config/ghostty" "ghostty"
 create_symlink "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf" ".tmux.conf"
+create_symlink "$DOTFILES_DIR/zshrc" "$HOME/.zshrc" ".zshrc"
 
 echo ""
 echo -e "${BLUE}Step 3: Installing plugin managers${NC}"

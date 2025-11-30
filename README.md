@@ -14,6 +14,8 @@ Personal configuration files for ghostty, nvim, and tmux.
 ├── tmux/             # Tmux configuration
 │   ├── tmux.conf     # Main config file
 │   └── plugins/      # TPM plugins (gitignored)
+├── zshrc             # Zsh configuration with tmux aliases
+├── install.sh        # Automated installation script
 └── .gitignore        # Ignore plugin directories
 ```
 
@@ -54,6 +56,7 @@ If you prefer to install manually:
    ln -s ~/dotfiles/tmux ~/.config/tmux
    ln -s ~/dotfiles/ghostty ~/.config/ghostty
    ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+   ln -s ~/dotfiles/zshrc ~/.zshrc
    ```
 
 3. Install plugins:
@@ -95,6 +98,11 @@ For plugin updates, use the respective plugin managers.
 ### Ghostty
 - Configuration: `ghostty/config`
 - Customize terminal appearance, fonts, themes, etc.
+
+### Zsh
+- Configuration: `zshrc`
+- Includes tmux session management aliases and functions
+- Smart attach function that switches if inside tmux, attaches if outside
 
 ## Notes
 
