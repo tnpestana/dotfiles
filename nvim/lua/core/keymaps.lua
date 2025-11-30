@@ -27,8 +27,8 @@ vim.keymap.set("n", "<leader>s", "/", { noremap = true })
 -- Backward search
 vim.keymap.set("n", "<leader>r", "?", { noremap = true })
 
--- Neo Tree
-vim.keymap.set("n", "<leader>o", "<cmd>Neotree focus<CR>", { desc = "NeoTree focus" })
+-- Oil file explorer
+vim.keymap.set("n", "<leader>o", "<cmd>Oil<CR>", { desc = "Open Oil file explorer" })
 
 -- ============================================================================
 -- Plugin Keymaps

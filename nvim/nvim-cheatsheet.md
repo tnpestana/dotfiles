@@ -20,7 +20,13 @@
 - `<leader>e` - Show diagnostic error message (floating window)
 
 ### File Explorer (Oil.nvim)
-Oil provides a buffer-based file explorer where you edit the filesystem like text:
+Oil provides a buffer-based file explorer where you edit the filesystem like text.
+
+**Opening Oil:**
+- `<leader>o` - Open Oil in current directory
+- `nvim .` - Oil opens automatically when editing a directory
+
+**Within Oil buffer:**
 - `-` - Open parent directory
 - `<CR>` - Open file/directory
 - `<C-s>` - Open in vertical split
@@ -37,11 +43,6 @@ Oil provides a buffer-based file explorer where you edit the filesystem like tex
 - `gx` - Open file with external program
 - `g.` - Toggle hidden files
 - `g\` - Toggle trash view
-
-**Note**: Oil opens automatically when editing a directory (e.g., `nvim .`)
-
-### NeoTree
-- `<leader>o` - Focus NeoTree sidebar
 
 ## Fuzzy Finding (Telescope)
 
