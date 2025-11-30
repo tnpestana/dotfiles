@@ -1,0 +1,15 @@
+# Ignore plugin directories
+nvim/lazy-lock.json
+tmux/plugins/*
+!tmux/plugins/.gitkeep
+
+# Ignore nvim plugin data
+nvim/.netrwhist
+nvim/lazy/
+nvim/mason/
+
+# OS-specific files
+.DS_Store
+*.swp
+*.swo
+*~

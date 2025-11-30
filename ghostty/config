@@ -1,0 +1,18 @@
+# Ghostty Configuration
+# See: https://ghostty.org/docs
+
+# Font configuration
+# font-family = "JetBrains Mono"
+# font-size = 13
+
+# Theme
+# theme = dark
+
+# Window
+# window-padding-x = 4
+# window-padding-y = 4
+
+# Shell
+# shell-integration = true
+
+# Customize your ghostty config here
