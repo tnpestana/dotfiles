@@ -53,6 +53,53 @@ ta mysession       # Smart attach/switch
 - If **inside tmux**: switches to the session
 - If **outside tmux**: attaches to the session
 
+## Git Aliases
+
+Comprehensive git shortcuts for faster workflow. See **[git-cheatsheet.md](git-cheatsheet.md)** for complete reference.
+
+### Status & Information
+```bash
+gs                   # git status
+gss                  # git status -s (short format)
+```
+
+### Common Workflow
+```bash
+ga <file>            # git add
+gaa                  # git add --all
+gcm "message"        # git commit -m "message"
+gp                   # git push
+gl                   # git pull
+```
+
+### Branching
+```bash
+gb                   # git branch (list)
+gco <branch>         # git checkout
+gcb <branch>         # git checkout -b (create and checkout)
+gsw <branch>         # git switch (newer)
+gbd <branch>         # git branch -d (delete)
+```
+
+### Logging & Diffing
+```bash
+glo                  # git log --oneline
+glg                  # git log --graph --oneline --all
+gd                   # git diff
+gds                  # git diff --staged
+```
+
+### Useful Shortcuts
+```bash
+gwip                 # Quick WIP commit
+gundo                # Undo last commit (keep changes)
+gunstage             # Unstage files
+gca                  # Amend last commit
+gpf                  # Push force with lease (safer)
+```
+
+**Note**: For complete git reference including rebase, stash, merge, and workflows, see **[git-cheatsheet.md](git-cheatsheet.md)**
+
 ## Application Aliases
 
 ### Love2D Game Engine
@@ -146,13 +193,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ~='cd ~'
 
-# Git shortcuts (if not using starship git status)
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
-alias gp='git push'
-alias gl='git log --oneline'
-
 # List aliases
 alias ll='ls -lah'
 alias la='ls -A'
@@ -166,6 +206,8 @@ alias mv='mv -i'
 alias reload='source ~/.zshrc'
 alias zshconfig='nvim ~/.zshrc'
 ```
+
+**Note**: Git aliases are already configured - see the Git Aliases section above.
 
 ## Tool Documentation
 

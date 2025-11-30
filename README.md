@@ -23,8 +23,9 @@ Personal configuration files for ghostty, nvim, and tmux.
 │   ├── tmux-cheatsheet.md      # Keybindings and usage reference
 │   ├── session-management-guide.md  # Advanced session management
 │   └── plugins/                # TPM plugins (gitignored)
-├── zshrc                       # Zsh configuration with tmux aliases
+├── zshrc                       # Zsh configuration with aliases
 ├── zsh-cheatsheet.md           # Shell aliases and tool reference
+├── git-cheatsheet.md           # Git commands and aliases reference
 ├── install.sh                  # Automated installation script
 └── .gitignore                  # Ignore plugin directories
 ```
@@ -100,6 +101,7 @@ Comprehensive cheatsheets are included for quick reference:
 - **[nvim-cheatsheet.md](nvim/nvim-cheatsheet.md)** - Neovim keybindings, LSP commands, Telescope, plugins, and Vim motions
 - **[tmux-cheatsheet.md](tmux/tmux-cheatsheet.md)** - Tmux keybindings, session management, and window organization
 - **[ghostty-cheatsheet.md](ghostty/ghostty-cheatsheet.md)** - Ghostty terminal keybindings and configuration options
+- **[git-cheatsheet.md](git-cheatsheet.md)** - Git commands, shell aliases, and common workflows
 - **[zsh-cheatsheet.md](zsh-cheatsheet.md)** - Shell aliases, Zoxide navigation, and tool integration
 
 These cheatsheets document the current configuration and are designed to be portable and shareable.
