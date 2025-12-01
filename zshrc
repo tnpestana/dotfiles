@@ -20,12 +20,15 @@ alias love="/Applications/love.app/Contents/MacOS/love"
 # Tmux session management
 # Smart tmux: attach to existing session or create new one
 function t() {
-  if tmux has-session 2>/dev/null; then
-    tmux attach
+  if command tmux has-session 2>/dev/null; then
+    command tmux attach
   else
-    tmux new-session -s main
+    command tmux new-session -s main
   fi
 }
+
+# Make 'tmux' command also use smart behavior
+alias tmux='t'
 
 alias tad='tmux attach -d -t'
 alias ts='tmux new-session -s'
