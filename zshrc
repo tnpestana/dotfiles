@@ -18,7 +18,15 @@ eval "$(zoxide init zsh)"
 alias love="/Applications/love.app/Contents/MacOS/love"
 
 # Tmux session management
-alias t='tmux'
+# Smart tmux: attach to existing session or create new one
+function t() {
+  if tmux has-session 2>/dev/null; then
+    tmux attach
+  else
+    tmux new-session -s main
+  fi
+}
+
 alias tad='tmux attach -d -t'
 alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'

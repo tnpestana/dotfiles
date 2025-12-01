@@ -36,9 +36,16 @@ zi                 # Opens interactive picker
 
 ## Tmux Session Management
 
-### Basic Aliases
+### Smart Tmux Function
 ```bash
-t                  # Start tmux
+t                  # Smart tmux: attach to existing or create "main" session
+```
+- If sessions exist → attaches to the most recent one
+- If no sessions exist → creates new session named "main"
+- **Use this most of the time** for automatic session management
+
+### Other Aliases
+```bash
 ts mysession       # Start new named session
 tl                 # List all sessions
 tad mysession      # Attach and detach others from session
@@ -46,7 +53,7 @@ tksv               # Kill tmux server (all sessions)
 tkss mysession     # Kill specific session
 ```
 
-### Smart Attach Function
+### Smart Attach to Specific Session
 ```bash
 ta mysession       # Smart attach/switch
 ```
@@ -227,24 +234,40 @@ alias zshconfig='nvim ~/.zshrc'
 
 ## Integrated Workflow Example
 
+### Daily Workflow (Recommended)
+```bash
+# Open terminal and start/attach to tmux
+t                  # Attaches to existing session or creates "main"
+
+# Apply your standard layout
+# Ctrl+S, a  (creates 3-pane working layout)
+
+# Navigate to project
+z myproject
+
+# Open nvim
+nvim .
+
+# Use telescope: Space + ff
+# Use LSP: gd, gr, K, etc.
+
+# Close terminal anytime - session persists!
+# Next time you open: just run 't' again
+```
+
+### Project-Specific Session
 ```bash
 # Navigate to project using zoxide
 z myproject
 
-# Start a tmux session for this project
+# Create named session for this project
 ts myproject
 
 # Create windows for different tasks
 # Ctrl+S, c  (new window)
 # Ctrl+S, ,  (rename to "backend")
 
-# Open nvim
-nvim .
-
-# Use telescope to find files: Space + ff
-# Use LSP features: gd, gr, K, etc.
-
-# When done, detach from tmux
+# When done, detach
 # Ctrl+S, d
 
 # Later, jump back
