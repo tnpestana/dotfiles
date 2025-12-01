@@ -1,12 +1,12 @@
 # Ghostty Configuration
 # See: https://ghostty.org/docs
 
+# Theme - Catppuccin Macchiato
+theme = catppuccin-macchiato
+
 # Font configuration
 # font-family = "JetBrains Mono"
 # font-size = 13
-
-# Theme
-# theme = dark
 
 # Window
 # window-padding-x = 4
