@@ -30,6 +30,19 @@ Press `Ctrl+S` then release, then press the command key.
 - `Ctrl+S` then `d` - Detach from session (keeps running in background)
 - `Ctrl+S` then `s` - List/switch sessions
 
+### Apply Predefined Layout
+- `Ctrl+S` then `a` - Apply standard working layout (3-pane setup)
+
+**What it does:**
+- Creates and arranges panes for editing with navigation/git
+- Main pane for editing, smaller panes for auxiliary tasks
+- Can be applied to any window
+
+**To add more layouts:**
+1. Arrange panes how you want
+2. Run: `tmux display-message -p "#{window_layout}"`
+3. Add to `tmux.conf`: `bind <key> split-window -h \; split-window -v \; select-layout "LAYOUT_STRING" \; display-message "Layout applied!"`
+
 ### Windows (like tabs)
 - `Ctrl+S` then `c` - Create new window
 - `Ctrl+S` then `n` - Next window
@@ -125,6 +138,9 @@ tmux new -s work
 
 # Reorder windows as needed
 # Ctrl+S, <  or  >
+
+# Apply standard working layout (optional)
+# Ctrl+S, a  (creates 3-pane setup)
 
 # Detach (keeps everything running)
 # Ctrl+S, d
