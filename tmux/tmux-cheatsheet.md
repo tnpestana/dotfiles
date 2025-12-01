@@ -30,6 +30,22 @@ Press `Ctrl+S` then release, then press the command key.
 - `Ctrl+S` then `d` - Detach from session (keeps running in background)
 - `Ctrl+S` then `s` - List/switch sessions
 
+### Session Persistence (Auto-saves every 15 min)
+Your tmux sessions are automatically saved and restored:
+- **Auto-save**: Sessions saved every 15 minutes
+- **Auto-restore**: Sessions automatically restored when tmux starts
+- **Manual save**: `Ctrl+S` then `Ctrl+s` (save immediately)
+- **Manual restore**: `Ctrl+S` then `Ctrl+r` (restore saved state)
+
+**What gets saved:**
+- All sessions, windows, and panes
+- Window/pane layouts and sizes
+- Working directories for each pane
+- Pane contents (scrollback history)
+- Running programs (restored as new instances)
+
+**Note**: Sessions persist even if terminal closes accidentally!
+
 ### Apply Predefined Layout
 - `Ctrl+S` then `a` - Apply standard working layout (3-pane setup)
 
