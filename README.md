@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal configuration files for ghostty, nvim, and tmux.
+Personal configuration files for ghostty, nvim, tmux, and starship.
 
 ## Structure
 
@@ -23,6 +23,7 @@ Personal configuration files for ghostty, nvim, and tmux.
 │   ├── tmux-cheatsheet.md      # Keybindings and usage reference
 │   ├── session-management-guide.md  # Advanced session management
 │   └── plugins/                # TPM plugins (gitignored)
+├── starship.toml               # Starship prompt configuration
 ├── zshrc                       # Zsh configuration with aliases
 ├── zsh-cheatsheet.md           # Shell aliases and tool reference
 ├── git-cheatsheet.md           # Git commands and aliases reference
@@ -66,6 +67,7 @@ If you prefer to install manually:
    ln -s ~/dotfiles/nvim ~/.config/nvim
    ln -s ~/dotfiles/tmux ~/.config/tmux
    ln -s ~/dotfiles/ghostty ~/.config/ghostty
+   ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
    ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
    ln -s ~/dotfiles/zshrc ~/.zshrc
    ```
