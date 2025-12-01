@@ -116,8 +116,11 @@ These cheatsheets document the current configuration and are designed to be port
 
 ### Tmux
 - Plugin manager: [TPM](https://github.com/tmux-plugins/tpm)
+- Plugins: catppuccin theme, tmux-resurrect, tmux-continuum
 - Plugins defined in `tmux/tmux.conf`
 - Plugins installed in `tmux/plugins/` (gitignored)
+- **Session persistence**: Auto-saves every 15 minutes, auto-restores on start
+- **Predefined layouts**: `prefix + a` applies standard 3-pane working layout
 
 ### Ghostty
 - Configuration: `ghostty/config`
@@ -125,8 +128,10 @@ These cheatsheets document the current configuration and are designed to be port
 
 ### Zsh
 - Configuration: `zshrc`
-- Includes tmux session management aliases and functions
-- Smart attach function that switches if inside tmux, attaches if outside
+- Shell enhancements: Starship prompt, Zoxide navigation
+- Tmux session management aliases and smart attach function
+- Comprehensive git aliases (40+ shortcuts)
+- See [zsh-cheatsheet.md](zsh-cheatsheet.md) and [git-cheatsheet.md](git-cheatsheet.md) for all aliases
 
 ## Notes
 
