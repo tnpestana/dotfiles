@@ -25,9 +25,10 @@ Personal configuration files for ghostty, nvim, tmux, and starship.
 ├── tmux/                       # Tmux configuration
 │   ├── tmux.conf               # Main config file
 │   └── plugins/                # TPM plugins (gitignored)
+├── zsh/                        # Zsh configuration
+│   ├── zshrc                   # Main config (shared across machines)
+│   └── zshrc.local.template    # Template for machine-specific config
 ├── starship.toml               # Starship prompt configuration (minimal)
-├── zshrc                       # Zsh configuration with aliases (shared)
-├── zshrc.local.template        # Template for machine-specific zsh config
 ├── install.sh                  # Automated installation script
 └── .gitignore                  # Ignore plugin directories
 ```
@@ -70,7 +71,7 @@ If you prefer to install manually:
    ln -s ~/dotfiles/ghostty ~/.config/ghostty
    ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
    ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-   ln -s ~/dotfiles/zshrc ~/.zshrc
+   ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
    ```
 
 3. Install plugins:
@@ -92,7 +93,7 @@ If you prefer to install manually:
 After installation, create `~/.zshrc.local` for machine-specific settings:
 
 ```bash
-cp ~/dotfiles/zshrc.local.template ~/.zshrc.local
+cp ~/dotfiles/zsh/zshrc.local.template ~/.zshrc.local
 # Edit ~/.zshrc.local with your machine-specific configs
 ```
 
@@ -145,7 +146,7 @@ Concise reference docs in `docs/` folder:
 - Customize terminal appearance, fonts, themes, etc.
 
 ### Zsh
-- Configuration: `zshrc` (shared) + `~/.zshrc.local` (machine-specific)
+- Configuration: `zsh/zshrc` (shared) + `~/.zshrc.local` (machine-specific)
 - Shell enhancements: Starship prompt, Zoxide navigation
 - Tmux session management aliases and smart attach function
 - Comprehensive git aliases (40+ shortcuts)

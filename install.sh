@@ -101,7 +101,7 @@ create_symlink "$DOTFILES_DIR/tmux" "$HOME/.config/tmux" "tmux"
 create_symlink "$DOTFILES_DIR/ghostty" "$HOME/.config/ghostty" "ghostty"
 create_symlink "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml" "starship"
 create_symlink "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf" ".tmux.conf"
-create_symlink "$DOTFILES_DIR/zshrc" "$HOME/.zshrc" ".zshrc"
+create_symlink "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc" ".zshrc"
 
 echo ""
 echo -e "${BLUE}Step 3: Installing plugin managers${NC}"
