@@ -6,12 +6,16 @@ Personal configuration files for ghostty, nvim, tmux, and starship.
 
 ```
 ~/dotfiles/
+├── docs/                       # Concise reference documentation
+│   ├── nvim.md                 # Neovim keybindings & plugins
+│   ├── tmux.md                 # Tmux commands & shortcuts
+│   ├── ghostty.md              # Ghostty keybindings
+│   ├── zsh.md                  # Shell enhancements & config
+│   └── git.md                  # Git aliases
 ├── ghostty/                    # Ghostty terminal configuration
-│   ├── config                  # Main config file
-│   └── ghostty-cheatsheet.md   # Keybindings and configuration reference
+│   └── config                  # Main config file
 ├── nvim/                       # Neovim configuration
 │   ├── init.lua                # Entry point
-│   ├── nvim-cheatsheet.md      # Keybindings and plugin reference
 │   └── lua/                    # Lua config modules
 │       ├── core/               # Core configuration
 │       │   ├── keymaps.lua     # Centralized keybindings
@@ -20,14 +24,10 @@ Personal configuration files for ghostty, nvim, tmux, and starship.
 │       └── plugins/            # Plugin configurations
 ├── tmux/                       # Tmux configuration
 │   ├── tmux.conf               # Main config file
-│   ├── tmux-cheatsheet.md      # Keybindings and usage reference
-│   ├── session-management-guide.md  # Advanced session management
 │   └── plugins/                # TPM plugins (gitignored)
 ├── starship.toml               # Starship prompt configuration (minimal)
 ├── zshrc                       # Zsh configuration with aliases (shared)
 ├── zshrc.local.template        # Template for machine-specific zsh config
-├── zsh-cheatsheet.md           # Shell aliases and tool reference
-├── git-cheatsheet.md           # Git commands and aliases reference
 ├── install.sh                  # Automated installation script
 └── .gitignore                  # Ignore plugin directories
 ```
@@ -114,17 +114,15 @@ git pull
 
 For plugin updates, use the respective plugin managers.
 
-## Cheatsheets
+## Documentation
 
-Comprehensive cheatsheets are included for quick reference:
+Concise reference docs in `docs/` folder:
 
-- **[nvim-cheatsheet.md](nvim/nvim-cheatsheet.md)** - Neovim keybindings, LSP commands, Telescope, plugins, and Vim motions
-- **[tmux-cheatsheet.md](tmux/tmux-cheatsheet.md)** - Tmux keybindings, session management, and window organization
-- **[ghostty-cheatsheet.md](ghostty/ghostty-cheatsheet.md)** - Ghostty terminal keybindings and configuration options
-- **[git-cheatsheet.md](git-cheatsheet.md)** - Git commands, shell aliases, and common workflows
-- **[zsh-cheatsheet.md](zsh-cheatsheet.md)** - Shell aliases, Zoxide navigation, and tool integration
-
-These cheatsheets document the current configuration and are designed to be portable and shareable.
+- **[nvim.md](docs/nvim.md)** - Neovim keybindings & plugins
+- **[tmux.md](docs/tmux.md)** - Tmux commands & shortcuts
+- **[ghostty.md](docs/ghostty.md)** - Ghostty keybindings
+- **[git.md](docs/git.md)** - Git aliases
+- **[zsh.md](docs/zsh.md)** - Shell enhancements & config
 
 ## Tools
 
@@ -152,7 +150,7 @@ These cheatsheets document the current configuration and are designed to be port
 - Tmux session management aliases and smart attach function
 - Comprehensive git aliases (40+ shortcuts)
 - **Machine-specific configs**: The `zshrc` sources `~/.zshrc.local` for machine-specific settings (PATH additions, work configs, personal tools). This file is not tracked in git.
-- See [zsh-cheatsheet.md](zsh-cheatsheet.md) and [git-cheatsheet.md](git-cheatsheet.md) for all aliases
+- See [zsh.md](docs/zsh.md) and [git.md](docs/git.md) for aliases
 
 ## Notes
 
