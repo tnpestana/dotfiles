@@ -23,7 +23,7 @@ Personal configuration files for ghostty, nvim, tmux, and starship.
 │   ├── tmux-cheatsheet.md      # Keybindings and usage reference
 │   ├── session-management-guide.md  # Advanced session management
 │   └── plugins/                # TPM plugins (gitignored)
-├── starship.toml               # Starship prompt configuration
+├── starship.toml               # Starship prompt configuration (minimal)
 ├── zshrc                       # Zsh configuration with aliases
 ├── zsh-cheatsheet.md           # Shell aliases and tool reference
 ├── git-cheatsheet.md           # Git commands and aliases reference

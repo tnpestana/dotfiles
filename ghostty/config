@@ -5,8 +5,8 @@
 theme = catppuccin-macchiato
 
 # Font configuration
-# font-family = "JetBrains Mono"
-# font-size = 13
+font-family = "JetBrainsMono Nerd Font"
+font-size = 13
 
 # Window
 # window-padding-x = 4
