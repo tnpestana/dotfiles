@@ -99,7 +99,7 @@ echo "-------------------------------------------"
 create_symlink "$DOTFILES_DIR/nvim" "$HOME/.config/nvim" "nvim"
 create_symlink "$DOTFILES_DIR/tmux" "$HOME/.config/tmux" "tmux"
 create_symlink "$DOTFILES_DIR/ghostty" "$HOME/.config/ghostty" "ghostty"
-create_symlink "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml" "starship"
+create_symlink "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship.toml" "starship"
 create_symlink "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf" ".tmux.conf"
 create_symlink "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc" ".zshrc"
 

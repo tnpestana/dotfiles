@@ -28,7 +28,8 @@ Personal configuration files for ghostty, nvim, tmux, and starship.
 ├── zsh/                        # Zsh configuration
 │   ├── zshrc                   # Main config (shared across machines)
 │   └── zshrc.local.template    # Template for machine-specific config
-├── starship.toml               # Starship prompt configuration (minimal)
+├── starship/                   # Starship prompt configuration
+│   └── starship.toml           # Minimal config (disables gcloud, username, hostname)
 ├── install.sh                  # Automated installation script
 └── .gitignore                  # Ignore plugin directories
 ```
@@ -69,7 +70,7 @@ If you prefer to install manually:
    ln -s ~/dotfiles/nvim ~/.config/nvim
    ln -s ~/dotfiles/tmux ~/.config/tmux
    ln -s ~/dotfiles/ghostty ~/.config/ghostty
-   ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
+   ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
    ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
    ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
    ```
