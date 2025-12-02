@@ -74,6 +74,34 @@ create_symlink() {
     print_success "Created symlink: $target -> $source"
 }
 
+echo -e "${BLUE}Step 0: Migrating existing .zshrc${NC}"
+echo "-------------------------------------------"
+
+# Check if .zshrc exists and is not a symlink
+if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
+    print_info "Found existing .zshrc file"
+
+    # Check if .zshrc.local already exists
+    if [ -f "$HOME/.zshrc.local" ]; then
+        print_warning ".zshrc.local already exists, skipping migration"
+    else
+        echo ""
+        read -p "Migrate existing .zshrc to .zshrc.local for machine-specific configs? (y/n) " -n 1 -r
+        echo ""
+
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            cp "$HOME/.zshrc" "$HOME/.zshrc.local"
+            print_success "Migrated .zshrc to .zshrc.local"
+            print_info "Your existing configs are now in .zshrc.local (not tracked in git)"
+        else
+            print_info "Skipping migration. Your .zshrc will be backed up."
+        fi
+    fi
+else
+    print_info "No existing .zshrc to migrate, or already a symlink"
+fi
+
+echo ""
 echo -e "${BLUE}Step 1: Backing up existing configurations${NC}"
 echo "-------------------------------------------"
 

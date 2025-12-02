@@ -50,6 +50,7 @@ Personal configuration files for ghostty, nvim, tmux, and starship.
    ```
 
 The script will:
+- **Migrate** existing `.zshrc` to `.zshrc.local` (prompts first)
 - Automatically backup any existing configs with timestamps
 - Remove old symlinks
 - Create new symlinks to the dotfiles repo
