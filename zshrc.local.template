@@ -1,0 +1,22 @@
+# Machine-specific zsh configuration
+# Copy this file to ~/.zshrc.local and customize for this machine
+# This file should NOT be tracked in git
+
+# Example PATH additions (uncomment and modify as needed):
+# export PATH=~/.npm-global/bin:$PATH
+# export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+# export PATH="$PATH:/opt/homebrew/bin"
+# export PATH="$PATH:$HOME/.local/bin"
+
+# Example tool-specific configs:
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# Example work-specific aliases:
+# alias vpn='sudo openconnect ...'
+# alias ssh-work='ssh user@work-server'
+
+# Example personal tool aliases:
+# alias love="/Applications/love.app/Contents/MacOS/love"
+
+# Add your machine-specific configurations below:

@@ -24,7 +24,8 @@ Personal configuration files for ghostty, nvim, tmux, and starship.
 │   ├── session-management-guide.md  # Advanced session management
 │   └── plugins/                # TPM plugins (gitignored)
 ├── starship.toml               # Starship prompt configuration (minimal)
-├── zshrc                       # Zsh configuration with aliases
+├── zshrc                       # Zsh configuration with aliases (shared)
+├── zshrc.local.template        # Template for machine-specific zsh config
 ├── zsh-cheatsheet.md           # Shell aliases and tool reference
 ├── git-cheatsheet.md           # Git commands and aliases reference
 ├── install.sh                  # Automated installation script
@@ -86,6 +87,23 @@ If you prefer to install manually:
    # In tmux, press: prefix + I (capital i) to install plugins
    ```
 
+### Machine-Specific Configuration
+
+After installation, create `~/.zshrc.local` for machine-specific settings:
+
+```bash
+cp ~/dotfiles/zshrc.local.template ~/.zshrc.local
+# Edit ~/.zshrc.local with your machine-specific configs
+```
+
+This file should contain:
+- PATH additions specific to this machine
+- Tool configs (nvm, pyenv, gcloud, etc.)
+- Work-specific aliases and functions
+- Any settings you don't want to share across machines
+
+**Important**: `~/.zshrc.local` is not tracked in git and won't be overwritten.
+
 ### Updating
 
 Pull the latest changes:
@@ -129,10 +147,11 @@ These cheatsheets document the current configuration and are designed to be port
 - Customize terminal appearance, fonts, themes, etc.
 
 ### Zsh
-- Configuration: `zshrc`
+- Configuration: `zshrc` (shared) + `~/.zshrc.local` (machine-specific)
 - Shell enhancements: Starship prompt, Zoxide navigation
 - Tmux session management aliases and smart attach function
 - Comprehensive git aliases (40+ shortcuts)
+- **Machine-specific configs**: The `zshrc` sources `~/.zshrc.local` for machine-specific settings (PATH additions, work configs, personal tools). This file is not tracked in git.
 - See [zsh-cheatsheet.md](zsh-cheatsheet.md) and [git-cheatsheet.md](git-cheatsheet.md) for all aliases
 
 ## Notes

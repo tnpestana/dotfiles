@@ -1,21 +1,9 @@
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/tiagopestana/.lmstudio/bin"
-# End of LM Studio CLI section
-
-export PATH=~/.npm-global/bin:$PATH
-export PATH=~/.npm-global/bin:$PATH
-export PATH="$HOME/google-cloud-sdk/bin:$PATH"
-
 # Starship
 eval "$(starship init zsh)"
 alias starship-reload='eval "$(starship init $SHELL)"'
 
 # Zoxide
 eval "$(zoxide init zsh)"
-
-# Love2D
-alias love="/Applications/love.app/Contents/MacOS/love"
 
 # Tmux session management
 # Smart tmux: attach to existing session or create new one
@@ -124,4 +112,14 @@ if [ -n "$TMUX" ]; then
   # Set a static prompt command that doesn't update the title
   precmd() { : }
   preexec() { : }
+fi
+
+# Machine-specific configuration
+# This file is not tracked in git and should contain machine-specific settings:
+# - PATH additions (brew, nvm, pyenv, google-cloud-sdk, etc.)
+# - Tool-specific configs (ollama, LM Studio, etc.)
+# - Work-specific aliases and functions
+# - Any other local customizations
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
 fi
