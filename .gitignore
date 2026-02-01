@@ -13,3 +13,6 @@ nvim/mason/
 *.swp
 *.swo
 *~
+
+# LLMs
+.opencode/
