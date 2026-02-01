@@ -27,7 +27,7 @@
 
 ### Panes
 - `prefix v` - Split vertical
-- `prefix s` - Split horizontal
+- `prefix z` - Split horizontal
 - `prefix h/j/k/l` - Navigate (vim-style)
 - `prefix H/J/K/L` - Resize (repeatable)
 - `prefix a` - Apply 3-pane layout
