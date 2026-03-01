@@ -17,29 +17,23 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = { "williamboman/mason.nvim" },
     config = function()
-      local lspconfig = require("lspconfig")
-
-      -- Capabilities (auto-upgrade if you use nvim-cmp; safe if you don't)
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       local ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
       if ok then
         capabilities = cmp_lsp.default_capabilities(capabilities)
       end
 
-      -- Common on_attach: useful LSP keymaps when a server attaches
       local on_attach = function(_, bufnr)
         local keymaps = require('core.keymaps')
         keymaps.setup_lsp_keymaps(bufnr)
       end
 
-      -- Python
-      lspconfig.pyright.setup({
+      vim.lsp.config('pyright', {
         on_attach = on_attach,
         capabilities = capabilities,
       })
 
-      -- JSON
-      lspconfig.jsonls.setup({
+      vim.lsp.config('jsonls', {
         on_attach = on_attach,
         capabilities = capabilities,
         settings = {
@@ -49,8 +43,7 @@ return {
         },
       })
 
-      -- Lua
-      lspconfig.lua_ls.setup({
+      vim.lsp.config('lua_ls', {
         on_attach = on_attach,
         capabilities = capabilities,
         settings = {
@@ -74,6 +67,8 @@ return {
           },
         },
       })
+
+      vim.lsp.enable({ "pyright", "jsonls", "lua_ls" })
     end,
   },
 }
