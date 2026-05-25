@@ -114,12 +114,3 @@ if [ -n "$TMUX" ]; then
   preexec() { : }
 fi
 
-# Machine-specific configuration
-# This file is not tracked in git and should contain machine-specific settings:
-# - PATH additions (brew, nvm, pyenv, google-cloud-sdk, etc.)
-# - Tool-specific configs (ollama, LM Studio, etc.)
-# - Work-specific aliases and functions
-# - Any other local customizations
-if [ -f ~/.zshrc.local ]; then
-    source ~/.zshrc.local
-fi

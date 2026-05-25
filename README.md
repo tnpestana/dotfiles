@@ -26,8 +26,7 @@ Personal configuration files for ghostty, nvim, tmux, and starship.
 │   ├── tmux.conf               # Main config file
 │   └── plugins/                # TPM plugins (gitignored)
 ├── zsh/                        # Zsh configuration
-│   ├── zshrc                   # Main config (shared across machines)
-│   └── zshrc.local.template    # Template for machine-specific config
+│   └── zshrc                   # Main config (shared across machines)
 ├── starship/                   # Starship prompt configuration
 │   └── starship.toml           # Minimal config (disables gcloud, username, hostname)
 ├── install.sh                  # Automated installation script
@@ -50,7 +49,8 @@ Personal configuration files for ghostty, nvim, tmux, and starship.
    ```
 
 The script will:
-- **Migrate** existing `.zshrc` to `.zshrc.local` (prompts first)
+- **Integrate** with your existing `.zshrc` by adding a source line (backs up original)
+- Create `~/.zshrc.dotfiles` symlink to the dotfiles shared config
 - Automatically backup any existing configs with timestamps
 - Remove old symlinks
 - Create new symlinks to the dotfiles repo
@@ -73,10 +73,15 @@ If you prefer to install manually:
    ln -s ~/dotfiles/ghostty ~/.config/ghostty
    ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
    ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-   ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
+   ln -s ~/dotfiles/zsh/zshrc ~/.zshrc.dotfiles
    ```
 
-3. Install plugins:
+3. Add this line to your `~/.zshrc`:
+   ```bash
+   source ~/.zshrc.dotfiles
+   ```
+
+4. Install plugins:
 
    **Neovim** (lazy.nvim):
    ```bash
@@ -89,23 +94,6 @@ If you prefer to install manually:
    git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
    # In tmux, press: prefix + I (capital i) to install plugins
    ```
-
-### Machine-Specific Configuration
-
-After installation, create `~/.zshrc.local` for machine-specific settings:
-
-```bash
-cp ~/dotfiles/zsh/zshrc.local.template ~/.zshrc.local
-# Edit ~/.zshrc.local with your machine-specific configs
-```
-
-This file should contain:
-- PATH additions specific to this machine
-- Tool configs (nvm, pyenv, gcloud, etc.)
-- Work-specific aliases and functions
-- Any settings you don't want to share across machines
-
-**Important**: `~/.zshrc.local` is not tracked in git and won't be overwritten.
 
 ### Updating
 
@@ -148,11 +136,12 @@ Concise reference docs in `docs/` folder:
 - Customize terminal appearance, fonts, themes, etc.
 
 ### Zsh
-- Configuration: `zsh/zshrc` (shared) + `~/.zshrc.local` (machine-specific)
+- Configuration: `zsh/zshrc` (shared, installed as `~/.zshrc.dotfiles`)
+- Your original `~/.zshrc` stays untouched — dotfiles are sourced at the top
+- Your config below the dotfiles block can override any dotfiles defaults
 - Shell enhancements: Starship prompt, Zoxide navigation
 - Tmux session management aliases and smart attach function
 - Comprehensive git aliases (40+ shortcuts)
-- **Machine-specific configs**: The `zshrc` sources `~/.zshrc.local` for machine-specific settings (PATH additions, work configs, personal tools). This file is not tracked in git.
 - See [zsh.md](docs/zsh.md) and [git.md](docs/git.md) for aliases
 
 ## Notes

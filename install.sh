@@ -79,67 +79,47 @@ check_dependencies() {
     # Check and install Homebrew
     check_homebrew
     
-    # Define required packages and their types
-    declare -A packages=(
-        ["git"]="false"
-        ["zsh"]="false"
-        ["neovim"]="false"
-        ["tmux"]="false"
-        ["starship"]="false"
-        ["ghostty"]="true"
-    )
-    
-    local missing=()
     local to_install_cask=()
     local to_install_brew=()
     
-    # Check each package
-    for package in "${!packages[@]}"; do
-        is_cask=${packages[$package]}
-        
-        case $package in
-            "git")
+    for pkg in git zsh neovim tmux starship ghostty; do
+        case $pkg in
+            git)
                 if ! command -v git >/dev/null 2>&1; then
-                    to_install_brew+=("$package")
+                    to_install_brew+=("git")
                 else
                     print_success "git already installed"
-                fi
-                ;;
-            "zsh")
+                fi ;;
+            zsh)
                 if ! command -v zsh >/dev/null 2>&1; then
-                    to_install_brew+=("$package")
+                    to_install_brew+=("zsh")
                 else
                     print_success "zsh already installed"
-                fi
-                ;;
-            "neovim")
+                fi ;;
+            neovim)
                 if ! command -v nvim >/dev/null 2>&1; then
                     to_install_brew+=("neovim")
                 else
                     print_success "nvim already installed"
-                fi
-                ;;
-            "tmux")
+                fi ;;
+            tmux)
                 if ! command -v tmux >/dev/null 2>&1; then
-                    to_install_brew+=("$package")
+                    to_install_brew+=("tmux")
                 else
                     print_success "tmux already installed"
-                fi
-                ;;
-            "starship")
+                fi ;;
+            starship)
                 if ! command -v starship >/dev/null 2>&1; then
-                    to_install_brew+=("$package")
+                    to_install_brew+=("starship")
                 else
                     print_success "starship already installed"
-                fi
-                ;;
-            "ghostty")
+                fi ;;
+            ghostty)
                 if ! command -v ghostty >/dev/null 2>&1; then
-                    to_install_cask+=("$package")
+                    to_install_cask+=("ghostty")
                 else
                     print_success "ghostty already installed"
-                fi
-                ;;
+                fi ;;
         esac
     done
     
@@ -184,7 +164,7 @@ rollback_installation() {
         "$HOME/.config/ghostty"
         "$HOME/.config/starship.toml"
         "$HOME/.tmux.conf"
-        "$HOME/.zshrc"
+        "$HOME/.zshrc.dotfiles"
     )
     
     for target in "${symlinks[@]}"; do
@@ -310,31 +290,100 @@ create_symlink() {
 
 check_dependencies
 
-echo -e "${BLUE}Step 1: Migrating existing .zshrc${NC}"
+echo -e "${BLUE}Step 1: Setting up zsh dotfiles integration${NC}"
 echo "-------------------------------------------"
 
-# Check if .zshrc exists and is not a symlink
-if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
-    print_info "Found existing .zshrc file"
+DOTFILES_MARKER_START="# >>> dotfiles >>>"
+DOTFILES_MARKER_END="# <<< dotfiles <<<"
 
-    # Check if .zshrc.local already exists
-    if [ -f "$HOME/.zshrc.local" ]; then
-        print_warning ".zshrc.local already exists, skipping migration"
+if [ -f "$HOME/.zshrc" ]; then
+    if [ -L "$HOME/.zshrc" ]; then
+        # Existing symlink from old installation — convert to new approach
+        print_info "Found existing .zshrc symlink (from previous installation version)"
+        print_info "Converting to new approach..."
+
+        # Backup old symlink target
+        mkdir -p "$BACKUP_DIR"
+        cp "$HOME/.zshrc" "$BACKUP_DIR/.zshrc"
+
+        # Remove old symlink
+        rm "$HOME/.zshrc"
+
+        # Create new .zshrc that sources the dotfiles config
+        cat > "$HOME/.zshrc" << 'ZSHRC_EOF'
+# >>> dotfiles >>>
+source ~/.zshrc.dotfiles
+# <<< dotfiles <<<
+ZSHRC_EOF
+        print_success "Converted to new zsh setup"
     else
-        echo ""
-        read -p "Migrate existing .zshrc to .zshrc.local for machine-specific configs? (y/n) " -n 1 -r
-        echo ""
-
-        if [[ $REPLY =~ ^[Yy]$ ]]; then
-            cp "$HOME/.zshrc" "$HOME/.zshrc.local"
-            print_success "Migrated .zshrc to .zshrc.local"
-            print_info "Your existing configs are now in .zshrc.local (not tracked in git)"
+        # Regular .zshrc file — add source line at the top if not already present
+        if grep -Fq "$DOTFILES_MARKER_START" "$HOME/.zshrc" 2>/dev/null; then
+            print_info ".zshrc already configured for dotfiles"
         else
-            print_info "Skipping migration. Your .zshrc will be backed up."
+            mkdir -p "$BACKUP_DIR"
+            cp "$HOME/.zshrc" "$BACKUP_DIR/.zshrc"
+
+            _tmpfile=$(mktemp)
+            {
+                echo "# >>> dotfiles >>>"
+                echo "source ~/.zshrc.dotfiles"
+                echo "# <<< dotfiles <<<"
+                echo ""
+                cat "$HOME/.zshrc"
+            } > "$_tmpfile" && mv "$_tmpfile" "$HOME/.zshrc"
+            print_success "Added dotfiles source at the top of .zshrc"
         fi
     fi
 else
-    print_info "No existing .zshrc to migrate, or already a symlink"
+    # No .zshrc exists — create one
+    mkdir -p "$BACKUP_DIR"
+    cat > "$HOME/.zshrc" << 'ZSHRC_EOF'
+# >>> dotfiles >>>
+source ~/.zshrc.dotfiles
+# <<< dotfiles <<<
+ZSHRC_EOF
+    print_success "Created .zshrc with dotfiles source"
+fi
+
+# Migrate existing .zshrc.local (from previous version of dotfiles)
+if [ -f "$HOME/.zshrc.local" ] && [ ! -L "$HOME/.zshrc.local" ]; then
+    if grep -qvE '^\s*(#|$)' "$HOME/.zshrc.local" 2>/dev/null; then
+        echo ""
+        print_info "Found existing .zshrc.local with machine-specific settings"
+        print_info "This file was used by a previous version of the dotfiles"
+        read -p "Append its contents to ~/.zshrc? (y/n) " -n 1 -r
+        echo ""
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            mkdir -p "$BACKUP_DIR"
+            cp "$HOME/.zshrc" "$BACKUP_DIR/.zshrc"
+            cp "$HOME/.zshrc.local" "$BACKUP_DIR/.zshrc.local"
+
+            _tmpfile=$(mktemp)
+            while IFS= read -r _line; do
+                echo "$_line" >> "$_tmpfile"
+                if [ "$_line" = "$DOTFILES_MARKER_END" ]; then
+                    echo "" >> "$_tmpfile"
+                    echo "# --- Machine-specific config (migrated from .zshrc.local) ---" >> "$_tmpfile"
+                    cat "$HOME/.zshrc.local" >> "$_tmpfile"
+                fi
+            done < "$HOME/.zshrc"
+            mv "$_tmpfile" "$HOME/.zshrc"
+            mv "$HOME/.zshrc.local" "$HOME/.zshrc.local.migrated"
+
+            print_success "Migrated .zshrc.local into .zshrc"
+            print_info "Original .zshrc.local renamed to .zshrc.local.migrated"
+        else
+            print_info "Will archive .zshrc.local to backup"
+        fi
+    fi
+fi
+
+# Archive any leftover .zshrc.local (not migrated, or empty/comment-only)
+if [ -f "$HOME/.zshrc.local" ]; then
+    mkdir -p "$BACKUP_DIR"
+    mv "$HOME/.zshrc.local" "$BACKUP_DIR/.zshrc.local"
+    print_success "Archived unused .zshrc.local to backup"
 fi
 
 echo ""
@@ -347,7 +396,6 @@ backup_if_exists "$HOME/.config/tmux" "tmux config"
 backup_if_exists "$HOME/.config/ghostty" "ghostty config"
 backup_if_exists "$HOME/.config/starship.toml" "starship config"
 backup_if_exists "$HOME/.tmux.conf" ".tmux.conf"
-backup_if_exists "$HOME/.zshrc" ".zshrc"
 
 if [ -d "$BACKUP_DIR" ]; then
     print_success "Backups saved to: $BACKUP_DIR"
@@ -365,7 +413,7 @@ create_symlink "$DOTFILES_DIR/tmux" "$HOME/.config/tmux" "tmux"
 create_symlink "$DOTFILES_DIR/ghostty" "$HOME/.config/ghostty" "ghostty"
 create_symlink "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship.toml" "starship"
 create_symlink "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf" ".tmux.conf"
-create_symlink "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc" ".zshrc"
+create_symlink "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc.dotfiles" ".zshrc.dotfiles"
 
 echo ""
 echo -e "${BLUE}Step 3: Installing plugin managers${NC}"

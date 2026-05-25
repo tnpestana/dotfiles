@@ -21,13 +21,9 @@ Smart directory jumping (learns frequently visited directories):
 - `tksv` - Kill server
 
 ## Configuration
-- **Shared**: `~/dotfiles/zshrc` (tracked in git)
-- **Machine-specific**: `~/.zshrc.local` (not tracked)
-
-Machine-specific file should contain:
-- PATH additions (brew, nvm, gcloud, etc.)
-- Tool configs
-- Work-specific aliases
+- **Your `.zshrc`**: Your original file — dotfiles are sourced at the top via `source ~/.zshrc.dotfiles`
+- **Shared**: `~/dotfiles/zsh/zshrc` (installed as `~/.zshrc.dotfiles`, tracked in git)
+- **Machine-specific**: Goes in your `~/.zshrc` below the dotfiles block to override defaults
 
 ## Features
 - Git aliases (see git.md)
