@@ -103,6 +103,12 @@ alias gwip='git add -u && git commit -m "WIP"'
 alias gundo='git reset --soft HEAD~1'
 alias gunstage='git reset HEAD --'
 
+# Worktree
+alias gwt='git worktree'
+alias gwtl='git worktree list'
+alias gwta='git worktree add'
+alias gwtrm='git worktree remove'
+
 # Disable automatic title updates in tmux (must be at the end, after starship/zoxide)
 if [ -n "$TMUX" ]; then
   # Override precmd to prevent title updates
