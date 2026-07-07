@@ -1,5 +1,6 @@
 -- Sign column: min 1, max 2 (always show 1, expand to 2 when needed)
 vim.opt.signcolumn = "auto:1-2"
+vim.opt.scrolloff = 16
 
 -- Copy text to system clipboard (enable copy/paste outside of nvim)
 vim.api.nvim_set_option_value("clipboard", "unnamed", {})
