@@ -1,6 +1,12 @@
+-- Show line numbers
+vim.o.number = true
+vim.o.relativenumber = true
+
 -- Sign column: min 1, max 2 (always show 1, expand to 2 when needed)
-vim.opt.signcolumn = "auto:1-2"
-vim.opt.scrolloff = 16
+vim.o.signcolumn = "auto:1-2"
+
+-- Distance at which the cursor starts scrolling the file
+vim.o.scrolloff = 16
 
 -- Copy text to system clipboard (enable copy/paste outside of nvim)
 vim.api.nvim_set_option_value("clipboard", "unnamed", {})
